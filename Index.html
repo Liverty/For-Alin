@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Untuk Liandra</title>
+<style>
+  :root {
+    --rose: #b6476b;
+    --rose-dark: #7d2b47;
+    --rose-soft: #f7dbe3;
+    --cream: #fdf7f4;
+    --ink: #3a2b31;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #ece2e0;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    line-height: 1.7;
+  }
+  .doc {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  .page {
+    background: var(--cream);
+    border-radius: 18px;
+    padding: 40px 26px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 28px rgba(125, 43, 71, 0.10);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .page::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(182, 71, 107, 0.25);
+    border-radius: 12px;
+    pointer-events: none;
+  }
+  .corner {
+    position: absolute;
+    width: 60px; height: 60px;
+    border-color: var(--rose);
+    opacity: 0.5;
+  }
+  .corner.tl { top: 22px; left: 22px; border-top: 1px solid; border-left: 1px solid; }
+  .corner.br { bottom: 22px; right: 22px; border-bottom: 1px solid; border-right: 1px solid; }
+
+  /* COVER */
+  .cover {
+    text-align: center;
+    padding: 56px 26px;
+    background:
+      radial-gradient(circle at 50% 0%, #fbe6ec 0%, transparent 60%),
+      var(--cream);
+  }
+  .cover .eyebrow {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 24px;
+  }
+  .cover .divider {
+    width: 60px; height: 1px;
+    background: var(--rose);
+    margin: 0 auto 24px;
+    opacity: 0.6;
+  }
+  .cover h1 {
+    font-size: 34px;
+    line-height: 1.25;
+    color: var(--rose-dark);
+    font-weight: normal;
+    margin-bottom: 14px;
+  }
+  .cover h1 em {
+    font-style: italic;
+    color: var(--rose);
+  }
+  .cover .sub {
+    font-size: 15px;
+    color: #7a5c66;
+    margin-top: 20px;
+    font-style: italic;
+  }
+  .cover .date {
+    margin-top: 30px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--rose-dark);
+  }
+  .photo-frame {
+    margin: 28px auto 0;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 4/5;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #f7dbe3, #ecd0d9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 4px solid #fff;
+    box-shadow: 0 8px 20px rgba(125, 43, 71, 0.15);
+  }
+  .photo-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-frame .placeholder {
+    color: #b6899a;
+    font-size: 13px;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* CONTENT */
+  h2 {
+    font-size: 20px;
+    color: var(--rose-dark);
+    font-weight: normal;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+  }
+  h2::after {
+    content: "";
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--rose);
+    margin-top: 10px;
+  }
+  p {
+    font-size: 15.5px;
+    margin-bottom: 14px;
+    color: #4a3a40;
+  }
+  .salutation {
+    font-size: 17px;
+    color: var(--rose-dark);
+    margin-bottom: 20px;
+  }
+  .pull {
+    font-style: italic;
+    font-size: 16.5px;
+    color: var(--rose-dark);
+    text-align: center;
+    padding: 18px 10px;
+    margin: 22px 0;
+    border-top: 1px solid rgba(182,71,107,0.3);
+    border-bottom: 1px solid rgba(182,71,107,0.3);
+    line-height: 1.6;
+  }
+  ul.prayers {
+    list-style: none;
+    padding: 0;
+  }
+  ul.prayers li {
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 12px;
+    font-size: 15.5px;
+    color: #4a3a40;
+  }
+  ul.prayers li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--rose);
+    font-weight: bold;
+  }
+  .signature {
+    margin-top: 34px;
+    text-align: right;
+    font-style: italic;
+    color: #6b4b56;
+    font-size: 15px;
+  }
+  .signature strong {
+    display: block;
+    font-size: 20px;
+    color: var(--rose-dark);
+    font-style: normal;
+    font-family: 'Georgia', serif;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  /* CLOSING */
+  .closing {
+    text-align: center;
+    padding: 60px 26px;
+    background:
+      radial-gradient(circle at 50% 100%, #fbe6ec 0%, transparent 65%),
+      var(--cream);
+  }
+  .closing .ornament {
+    color: var(--rose);
+    font-size: 22px;
+    letter-spacing: 12px;
+    margin-bottom: 26px;
+    opacity: 0.7;
+  }
+  .closing h2 {
+    text-align: center;
+  }
+  .closing h2::after {
+    margin: 10px auto 0;
+  }
+  .closing p {
+    font-size: 16px;
+    max-width: 480px;
+    margin: 0 auto 16px;
+  }
+  .closing .final {
+    font-style: italic;
+    color: var(--rose-dark);
+    font-size: 17px;
+    margin-top: 26px;
+  }
+  .closing .signed {
+    margin-top: 40px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rose);
+  }
+  .closing .name {
+    font-size: 26px;
+    color: var(--rose-dark);
+    margin-top: 6px;
+    font-family: 'Georgia', serif;
+    letter-spacing: 2px;
+  }
+
+  /* PRINT */
+  @media print {
+    html, body { background: #fff; }
+    .doc { padding: 0; max-width: none; }
+    .page {
+      border-radius: 0;
+      box-shadow: none;
+      margin: 0;
+      min-height: 100vh;
+      padding: 22mm 18mm;
+    }
+    .page::before { inset: 12mm; }
+    .corner.tl { top: 16mm; left: 16mm; }
+    .corner.br { bottom: 16mm; right: 16mm; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+  <!-- ============ HALAMAN 1: COVER ============ -->
+  <section class="page cover">
+    <div class="corner tl"></div>
+    <div class="corner br"></div>
+
+    <div class="eyebrow">Untuk Kamu, Sayang</div>
+    <div class="divider"></div>
+
+    <h1>Selamat Ulang Tahun,<br><em>Liandra</em></h1>
+
+    <p class="sub">Sebuah surat kecil dari seseorang yang menyayangimu dari jauh</p>
+
+    <div class="photo-frame">
+      <!-- Ganti src="" dengan nama file fotomu, misal: src="foto.jpg" -->
+      <img src="" alt="Foto kami" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="placeholder" style="display:none;">
+        [ FOTO DI SINI ]<br>Taruh foto kamu & dia di sini
+      </div>
+    </div>
+
+    <p class="date">10 · 10 · 2026</p>
+  </section>
+
+  <!-- ============ HALAMAN 2: SURAT CINTA ============ -->
+  <section class="page">
+    <div class="corner tl"></div>
+    <div class="corner br"></div>
+
+    <p class="salutation">Untuk Liandra tersayang,</p>
+
+    <p>Hari ini bumi merayakan sesuatu yang diam-diam selalu aku syukuri — kehadiranmu. Tujuh bulan mungkin terdengar singkat bagi orang lain, tapi bagiku, setiap harinya terasa cukup untuk membuat aku semakin yakin: kamu adalah orang yang tepat untuk aku sayangi, meski jarak memisahkan kita.</p>
+
+    <p>Aku tahu kita nggak selalu bisa bertemu sesering yang kita mau. Ada jarak, ada restu yang masih kita tunggu, ada rindu yang cuma bisa dititipkan lewat pesan dan doa. Tapi justru dari semua itu, aku belajar bahwa sayang yang tulus nggak butuh selalu dekat — cukup konsisten, cukup sabar, cukup setia.</p>
+
+    <div class="pull">
+      “Aku nggak sedang menunggu waktu yang sempurna.<br>
+      Aku sedang menunggu waktu di mana kita akhirnya boleh bersama.”
+    </div>
+
+    <p>Selamat ulang tahun, sayang. Semoga tahun ini menjadi tahun yang lembut untukmu — tahun di mana kamu merasa cukup, dicintai, dan tenang. Aku bersyukur bisa jadi bagian kecil dari hidupmu, dan aku berharap bisa terus jadi bagian itu, lebih lama lagi.</p>
+
+    <div class="signature">
+      Dengan segenap sayang,
+      <strong>Ijar</strong>
+    </div>
+  </section>
+
+  <!-- ============ HALAMAN 3: DOA & PENUTUP ============ -->
+  <section class="page closing">
+    <div class="corner tl"></div>
+    <div class="corner br"></div>
+
+    <div class="ornament">❦ ❦ ❦</div>
+
+    <h2>Doa & Harapanku Untukmu</h2>
+
+    <ul class="prayers" style="text-align:left; max-width:480px; margin:0 auto;">
+      <li>Semoga kamu selalu sehat, dijauhkan dari hal-hal yang menyakitkan, dan dikelilingi orang-orang yang tulus menyayangimu.</li>
+      <li>Semoga setiap usaha yang kamu kejar pelan-pelan menemukan jalannya, tanpa harus kamu paksakan sampai lelah.</li>
+      <li>Semoga kamu selalu punya alasan untuk tersenyum, bahkan di hari-hari yang terasa berat.</li>
+      <li>Dan semoga, di antara semua doa itu, ada satu doa yang kita sama-sama tunggu — waktu di mana kita bisa bertemu tanpa harus berpamitan lewat layar.</li>
+    </ul>
+
+    <p class="final" style="margin-top:34px;">
+      Aku nggak bisa memberi dunia,<br>
+      tapi aku akan menjaga bagian dunia yang paling berarti bagiku — kamu.
+    </p>
+
+    <div class="signed">Dengan cinta,</div>
+    <div class="name">Ijar</div>
+    <p style="font-size:13px; margin-top:20px; color:#8a6b75; font-style:italic;">10 Oktober 2026</p>
+  </section>
+
+</div>
+
+</body>
+</html>
